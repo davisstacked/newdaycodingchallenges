@@ -172,6 +172,27 @@ const words = () => {
   return words;
 }
 
-returns['olleH', 'dlroW']
+//returns['olleH', 'dlroW']
 
 // since the toLowerCase is outside of parentheses does not do anything i guess. dont know why. 
+
+// 11/15
+// the following code attempts to detect whether an array contains positive and negative numbers in a single pass. Which test input would reveal a bug by producing incorrect output?
+
+function hasPosNeg(array) {
+  let hasPos = false
+  let hasNeg = false
+
+  array.forEach(num => {
+    hasPos = num > 0
+    hasNeg = num < 0
+  })
+
+  return [hasPos, hasNeg]
+}
+
+console.log(hasPosNeg([0, -1, -2]))
+console.log(hasPosNeg([0, 1, -1, -2, -4 ]))
+console.log(hasPosNeg([]))
+console.log(hasPosNeg([0, 1, 2]))
+// this is throwing an error because hasPos and hasNeg is changing based on every new value. so it is only recording what the last value is. 
