@@ -153,4 +153,25 @@ function buildWordTreeFromSentences(sentenceList) {
 let tree = buildWordTreeFromSentences(['Hello World', 'Hello There'])
 // answer is {Hello: { word: {}, there: {}}}
 
-console.log(tree)
+// console.log(tree)
+
+// 9/15
+// what is the value of g after the following code block runs?
+const f = n => n <= 1 ? 1 : n * f(n - 1);
+
+let g = f(4);
+
+console.log(g)
+
+// 10/15
+const words = () => {
+  let words = ['Hello', 'World']
+  words.forEach((word, i) => {
+    (words[i] = word.split('').reverse().join('')).toLowerCase()
+  })
+  return words;
+}
+
+returns['olleH', 'dlroW']
+
+// since the toLowerCase is outside of parentheses does not do anything i guess. dont know why. 
