@@ -191,8 +191,78 @@ function hasPosNeg(array) {
   return [hasPos, hasNeg]
 }
 
-console.log(hasPosNeg([0, -1, -2]))
-console.log(hasPosNeg([0, 1, -1, -2, -4 ]))
-console.log(hasPosNeg([]))
-console.log(hasPosNeg([0, 1, 2]))
+// console.log(hasPosNeg([0, -1, -2]))
+// console.log(hasPosNeg([0, 1, -1, -2, -4 ]))
+// console.log(hasPosNeg([]))
+// console.log(hasPosNeg([0, 1, 2]))
 // this is throwing an error because hasPos and hasNeg is changing based on every new value. so it is only recording what the last value is. 
+
+// 12/15
+// what does the following code do?
+function _(func, items) {
+  let i = 0
+  for (let item of items) {
+    if (func(item)) {
+      items[i] = item
+      i += 1
+    }
+  }
+  items.splice(i)
+}
+
+// i believe this code filters a sequence in-place for items which satisfy a predicate
+
+// 13/15
+// What is wrong with the following code snippet
+
+const fs = require('fs'.promises)
+
+async function fileOpener(filepath) {
+  let file
+  try {
+    file = await fs.open(filepath)
+    let data = file.read()
+  } finally {
+    file.close()
+  }
+}
+
+// The file may be read before all data is read because there is no await before file.read()
+
+// 14/15
+// What is wrong with the following code?
+function findFirstPosition(arr, fn) {
+  let pos = false;
+  for (let i = 0; i < arr.length; i++) {
+    let row = arr[i];
+    for (let j = 0; j < row.length; j++) {
+      if (fn(row[j])) {
+        pos = [i, j]
+      }
+    }
+  }
+  return pos;
+}
+// which is right
+// j is going to be returned incorrectly. it will always be the length of the row
+// this code will return the last positiion for which fn is truthy
+// this code only works for square arrays
+// this code will return a position for which fn is truthy, but might not return the first occurance
+
+// 15/15
+// Given objects with name and date fields, the task is to sort the objects alphabetically by name, using most recent date as a tie-breaker. Using the provided sortBy() method, which calls to a stable sort method would implement this correctly?
+
+function sortBy(array, prop) {
+  return array.sort((a, b) => {
+    if (a[prop] < b[prop]) return -1
+    if (a[prop] < b[prop]) return 1
+
+    return 0
+  })
+}
+
+// Select the correct answer
+// sortBy(sortBy(objs, 'name'), 'date').reverse()
+// sortBy(objs, ['name', 'date'])
+// sortBy(sortBy(objs, 'date').reverse(), 'name')
+// sortBy(objs, ['date', 'name'])
