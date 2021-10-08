@@ -215,19 +215,25 @@ function _(func, items) {
 // 13/15
 // What is wrong with the following code snippet
 
-const fs = require('fs'.promises)
+// const fs = require('fs'.promises)
 
-async function fileOpener(filepath) {
-  let file
-  try {
-    file = await fs.open(filepath)
-    let data = file.read()
-  } finally {
-    file.close()
-  }
-}
+// async function fileOpener(filepath) {
+//   let file
+//   try {
+//     file = await fs.open(filepath)
+//     let data = file.read()
+//   } finally {
+//     file.close()
+//   }
+// }
 
 // The file may be read before all data is read because there is no await before file.read()
+
+function equalone(char) {
+  if (char === "a") {return true }
+}
+
+let n = ['leah', 'smitha', 'eighta']
 
 // 14/15
 // What is wrong with the following code?
@@ -243,6 +249,9 @@ function findFirstPosition(arr, fn) {
   }
   return pos;
 }
+
+console.log(findFirstPosition(n, equalone))
+
 // which is right
 // j is going to be returned incorrectly. it will always be the length of the row
 // this code will return the last positiion for which fn is truthy
@@ -261,8 +270,11 @@ function sortBy(array, prop) {
   })
 }
 
-// Select the correct answer
 // sortBy(sortBy(objs, 'name'), 'date').reverse()
 // sortBy(objs, ['name', 'date'])
 // sortBy(sortBy(objs, 'date').reverse(), 'name')
 // sortBy(objs, ['date', 'name'])
+
+// look up order of operations 
+// solve last two problems
+
