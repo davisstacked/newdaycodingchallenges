@@ -29,7 +29,7 @@ const StringPeriods = (str) => {
     return -1
   } else {
     // only return the second from last element in the substring. because it will also match the full string and potentially shorter strings that also match. so we only want the second from last element. ie substrings = ['abcd', "abcdabcdabcdabcdabcd"]
-    return substrings[substrings[substrings.length-2]]
+    return substrings[substrings.length-2]
   }
 }
 
