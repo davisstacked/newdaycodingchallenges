@@ -1,0 +1,1 @@
+// The palindromic score of a string is the number of errors (characters which do not match) when the string is read forwards and backwards. For example, the palindromic score of 'fox' is 2, because 'fox' and 'xof' differ by two characters. Write a function to take a string and return its palindromic score.
