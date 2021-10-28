@@ -15,4 +15,11 @@ function PowersofTwo(num) {
   return num === 2
 }
 
+// recursive
+// function PowersofTwo(num) {
+//   if (num === 2) { return true; }
+//   if (num % 2 !== 0) { return false; }
+//   return PowersofTwo(num/2);
+// }
+
 console.log(PowersofTwo(124))
