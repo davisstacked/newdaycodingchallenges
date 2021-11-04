@@ -53,5 +53,7 @@ const reverseWords = (message) => {
   return message;
 }
 
+// O(n) time and 0(1) space
+
 
 console.log(reverseWords(message))
