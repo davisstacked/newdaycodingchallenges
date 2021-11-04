@@ -32,7 +32,15 @@ function reverse(arr) {
     arr[rightIndex] = temp;
 
     // Move towards middle
-    letIndex++;
+    leftIndex++;
     rightIndex--;
   }
+
+  return arr;
 }
+
+// O(n) time and O(1) space.
+
+const letters = ["a", "b", "c", "d", "e", "f", "g"]
+
+console.log(reverse(letters))
