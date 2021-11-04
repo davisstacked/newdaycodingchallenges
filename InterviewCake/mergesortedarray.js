@@ -30,21 +30,16 @@ const mergeArrays = (myArray, aliceArray) => {
   // until we've merged all the items
   while (currentIndexMerged < (myArray.length + aliceArray.length)) {
 
-    // Case: my array is exhausted:
-    if (currentIndexMine >= myArray.length) {
-      mergedArray[currentIndexMerged] = alicesArray[currentIndexAlices];
-      currentIndexAlices++;
-    
-    // Case: Alice's array is exhausted
-    } else if (currentIndexAlices >= aliceArray.length) {
-      mergedArray[currentIndexMerged] = myArray[currentIndexMine];
-      currentIndexMine++;
-    }
+    const isMyArrayExhausted = currentIndexMine >= myArray.length;
+    const isAlicesArrayExhausted = currentIndexAlices >= alicesArray.length;
 
     // Case: next comes from my array
-    else if (myArray[currentIndexMine] < alicesArray[currentIndexAlices]) {
-      mergedArray[currentIndexMerged] = myArray[currentIndexMine];
-      currentIndexMine++;
+    // My array must not be exhausted, and EITHER:
+    // 1) Alice's array IS exhausted, or
+    // 2) The current element in my array is less 
+    // than the current element in Alice's array
+    if (!isMyArrayExhausted && (isAlicesArrayExhausted || (myArray[currentIndexMine] < alicesArray[currentIndexAlices]))) {
+      
     } else {
       // Case: next comes from Alice's array
       mergedArray[currentIndexMerged] = alicesArray[currentIndexAlices];
@@ -56,6 +51,8 @@ const mergeArrays = (myArray, aliceArray) => {
   
   return mergedArray;
 }
+
+// O(n) time and O(n) additional space, where nn is the number of items in the merged array.
 
 console.log(mergeArrays(myArray, alicesArray));
 // logs [1, 3, 4, 5, 6, 8, 10, 11, 12, 14, 15, 19]
