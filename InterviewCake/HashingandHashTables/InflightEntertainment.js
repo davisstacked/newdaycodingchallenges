@@ -32,3 +32,12 @@ const canTwoMoviesFillFlight = (flightLength, movieLengths) => {
 
 const movieTimes = [20, 30, 50, 60, 40]
 console.log(canTwoMoviesFillFlight(100, movieTimes))
+
+// Bonus
+// What if we wanted the movie lengths to sum to something close to the flight length (say, within 20 minutes)?
+// What if we wanted to fill the flight length as nicely as possible with any number of movies (not just 2)?
+// What if we knew that movieLengths was sorted? Could we save some space and/or time?
+// What We Learned
+// The trick was to use a set to access our movies by length, in O(1)O(1) time.
+
+// Using hash-based data structures, like objects or sets, is so common in coding challenge solutions, it should always be your first thought. Always ask yourself, right from the start: "Can I save time by using an object?"
