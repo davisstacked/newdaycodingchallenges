@@ -22,9 +22,9 @@
 
 // But,
 
-  const TOO = [17, 8, 24]
+  const TOO = [17, 8, 24, 40, 18]
   const DIO = [12, 19, 2]
-  const SO = [17, 8, 12, 19, 24, 2]
+  const SO = [17, 8, 12, 19, 24, 18, 2, 40]
 // would be first-come, first-served.
 
 // Note: Order numbers are arbitrary. They do not have to be in increasing order.
@@ -65,44 +65,77 @@
 
 // We can do better than this O(n^2) time and space cost. One way we could to that is to avoid slicing and instead keep track of indices in the array:
 
-const isFirstComeFirstServed = (takeOutOrders, dineInOrders, servedOrders, servedOrdersIndex, takeOutOrdersIndex, dineInOrdersIndex) => {
-  servedOrdersIndex = (typeof servedOrdersIndex !== "undefined") ? servedOrdersIndex : 0;
-  takeOutOrdersIndex = (typeof takeOutOrdersIndex !== "undefined") ? takeOutOrdersIndex : 0;
-  dineInOrdersIndex = (typeof dineInOrdersIndex !== "undefined") ? dineInOrdersIndex : 0;
+// const isFirstComeFirstServed = (takeOutOrders, dineInOrders, servedOrders, servedOrdersIndex, takeOutOrdersIndex, dineInOrdersIndex) => {
+//   servedOrdersIndex = (typeof servedOrdersIndex !== "undefined") ? servedOrdersIndex : 0;
+//   takeOutOrdersIndex = (typeof takeOutOrdersIndex !== "undefined") ? takeOutOrdersIndex : 0;
+//   dineInOrdersIndex = (typeof dineInOrdersIndex !== "undefined") ? dineInOrdersIndex : 0;
 
-  // base case we've hit the end of servedOrders
-  // using the array's length will end the function after the array has been completely read. if we do length-1 for this then it will stop the function before doing it on the last element.
-  if (servedOrdersIndex === servedOrders.length) {
-    return true;
-  }
+//   // base case we've hit the end of servedOrders
+//   // using the array's length will end the function after the array has been completely read. if we do length-1 for this then it will stop the function before doing it on the last element.
+//   if (servedOrdersIndex === servedOrders.length) {
+//     return true;
+//   }
 
-  // if we still have orders in takeOutOrders 
-  // and the current order in takeOutOrders is the same 
-  // as the current order in served orders
-  if ((takeOutOrdersIndex < takeOutOrders.length) &&
-    (takeOutOrders[takeOutOrdersIndex] === servedOrders[servedOrdersIndex])) {
-    takeOutOrdersIndex++;
+//   // if we still have orders in takeOutOrders 
+//   // and the current order in takeOutOrders is the same 
+//   // as the current order in served orders
+//   if ((takeOutOrdersIndex < takeOutOrders.length) &&
+//     (takeOutOrders[takeOutOrdersIndex] === servedOrders[servedOrdersIndex])) {
+//     takeOutOrdersIndex++;
 
-    // if we still have orders in dineInOrders
-    // and the current order in servedOrders
-  } else if ((dineInOrdersIndex < dineInOrders.length) && 
-    (dineInOrders[dineInOrdersIndex] === servedOrders[servedOrdersIndex])) {
-    dineInOrdersIndex++;
-  }
+//     // if we still have orders in dineInOrders
+//     // and the current order in servedOrders
+//   } else if ((dineInOrdersIndex < dineInOrders.length) && 
+//     (dineInOrders[dineInOrdersIndex] === servedOrders[servedOrdersIndex])) {
+//     dineInOrdersIndex++;
+//   }
   
-  // if the current order in servedOrders doesn't match
-  // the current order in takeOutOrders or dineInOrders, then we're not 
-  // serving first-come, first-served order.
-  else {
-    return false;
-  }
+//   // if the current order in servedOrders doesn't match
+//   // the current order in takeOutOrders or dineInOrders, then we're not 
+//   // serving first-come, first-served order.
+//   else {
+//     return false;
+//   }
 
-  // the current order in servedOrders has now been "accounted for"
-  // so move on to the next one
-  servedOrdersIndex++;
-  return isFirstComeFirstServed(takeOutOrders, dineInOrders, servedOrders, servedOrdersIndex, takeOutOrdersIndex, dineInOrdersIndex)
-}
+//   // the current order in servedOrders has now been "accounted for"
+//   // so move on to the next one
+//   servedOrdersIndex++;
+//   return isFirstComeFirstServed(takeOutOrders, dineInOrders, servedOrders, servedOrdersIndex, takeOutOrdersIndex, dineInOrdersIndex)
+// }
 
 // So now we're down to O(n) time, but we're still taking O(n) space in the call stack ↴ because of our recursion. 
+
+// console.log(isFirstComeFirstServed(TOO, DIO, SO))
+
+// Best Solution 
+
+const isFirstComeFirstServed = (dineInOrders, takeOutOrders, servedOrders) => {
+  // Keep pointers to the current index in takeOutOrders, dineInOrders, and servedOrders.
+  let takeOutOrdersIndex = 0;
+  let dineInOrdersIndex = 0;
+  let servedOrdersIndex = 0;
+  
+  // Walk through servedOrders from beginning to end.
+  for (let i = servedOrdersIndex; i < servedOrders.length; i++) {
+
+    // If the current order in servedOrders is the same as the current customer order in takeOutOrders, increment takeOutOrdersIndex and keep going. This can be thought of as "checking off" the current customer order in takeOutOrders and servedOrders, reducing the problem to the remaining customer orders in the arrays.
+    if (servedOrders[i] === takeOutOrders[takeOutOrdersIndex]) {
+      takeOutOrdersIndex++;
+    // Same as above with dineInOrders.
+    } else if (servedOrders[i] === dineInOrders[dineInOrdersIndex]) {
+      dineInOrdersIndex++;
+      // If the current order isn't the same as the customer order at the front of takeOutOrders or dineInOrders, we know something's gone wrong and we're not serving food first-come, first-served.
+    } else {
+      return false;
+    }
+  }
+  // If we make it all the way to the end of servedOrders, we'll check that we've reached the end of takeOutOrders and dineInOrders. If every customer order checks out, that means we're serving food first-come, first-served.
+  if (dineInOrdersIndex === dineInOrders.length && takeOutOrdersIndex === takeOutOrders.length) {
+    return "we're serving food first come first serve!"
+  }
+
+}
+
+// O(n) time and O(1) additional space.
 
 console.log(isFirstComeFirstServed(TOO, DIO, SO))
