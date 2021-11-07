@@ -130,6 +130,8 @@ const isFirstComeFirstServed = (dineInOrders, takeOutOrders, servedOrders) => {
     }
   }
   // If we make it all the way to the end of servedOrders, we'll check that we've reached the end of takeOutOrders and dineInOrders. If every customer order checks out, that means we're serving food first-come, first-served.
+
+  // it's .length and not length - 1 because after we check the last index of the orders, if it matches we still increment the number so the final index will be one past the actual indexes.
   if (dineInOrdersIndex === dineInOrders.length && takeOutOrdersIndex === takeOutOrders.length) {
     return "we're serving food first come first serve!"
   }
