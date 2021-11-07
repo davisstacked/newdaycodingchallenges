@@ -59,6 +59,8 @@ const highestProductOfThree = (arrayOfInts) => {
 
 }
 
+// O(n) time and O(1) space complexity
+
 leah = [1, 5, 7, 70, 20, 50, 99, 10, 30, 9, 55]
 
 console.log(highestProductOfThree(leah))
