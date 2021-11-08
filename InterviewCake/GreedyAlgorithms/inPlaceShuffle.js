@@ -37,6 +37,25 @@ const shuffle = (array) => {
   }
 }
 
+// this is the naive solution. what is different is that in the best solution we are getting a new random number each time based on i instead of zero. this way the number of choices will decrease each time. 
+// naive solution doesnt give uniform distribution. 
+// function naiveShuffle(array) {
+
+//   // For each index in the array
+//   for (let firstIndex = 0; firstIndex < array.length; firstIndex++) {
+
+//     // Grab a random other index
+//     const secondIndex = getRandom(0, array.length - 1);
+
+//     // And swap the values
+//     if (secondIndex !== firstIndex) {
+//       const temp = array[firstIndex];
+//       array[firstIndex] = array[secondIndex];
+//       array[secondIndex] = temp;
+//     }
+//   }
+// }
+
 // This is a semi-famous algorithm known as the Fisher-Yates shuffle (sometimes called the Knuth shuffle).
 
 // O(n) time and 0(1) space.
