@@ -1,11 +1,15 @@
 // Binary Search Tree Class
 
+// Big O of BST
+// insertion - O(log n)
+// searching - O(log n)
+
 class BinarySearchTree {
   constructor() {
     this.root = null;
   }
 
-  contains(value) {
+  has(value) {
     if (this.root === null) {
       return false;
     } else {
@@ -24,7 +28,7 @@ class BinarySearchTree {
     }
   }
 
-  insert(value) {
+  add(value) {
     const newNode = new Node(value);
     if (this.root === null) {
       this.root = newNode;
@@ -50,6 +54,17 @@ class BinarySearchTree {
       }
     }
   }
+
+  breadthFirstSearch = () => {
+    // create a queue (this can be an array) and a variable to store the values of the nodes visited. 
+    const queue = [],
+        visitedValues = [];
+    // place the root node in the queue
+    toVisitQueue.push(this.root)
+    // loop as long as there is anything in the queue
+    while (toVisitQueue.length) {
+      if (toVisitQueue[0] ? )
+    }
 }
 
 class Node {
