@@ -4,6 +4,7 @@
 
 // PREORDER
 const DFSPreOrder = (BST) => {
+  // order read This - Left - Right
   
   // Create a variable to store the values of nodes visited
   const nodeValues = [];
@@ -27,6 +28,7 @@ const DFSPreOrder = (BST) => {
 }
 
 // POSTORDER
+// read data - L - R - This
 const DFSPostOrder = (BST) => {
   // Create a variable to store the values of nodes visited
   const nodeValues = [];
@@ -47,4 +49,19 @@ const DFSPostOrder = (BST) => {
   traverse(current);
   return nodeValues;
 }
+
+// IN ORDER
+// read data L - this - R
+const DFSInOrder = (BST) => {
+
+  // Create a variable to store the values of nodes visited
+  const nodeValues = [];
+
+  const traverse = (node) => {
+    if (node.left) traverse(node.left);
+    nodeValues.push(node.value);
+    if (node.right) traverse(node.right);
+  }
+  traverse(BST.root)
+} 
 
