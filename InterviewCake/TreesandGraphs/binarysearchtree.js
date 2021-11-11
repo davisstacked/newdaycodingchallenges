@@ -58,13 +58,18 @@ class BinarySearchTree {
   breadthFirstSearch = () => {
     // create a queue (this can be an array) and a variable to store the values of the nodes visited. 
     const queue = [],
-        visitedValues = [];
+      visitedValues = [],
+      node = this.root;
     // place the root node in the queue
-    toVisitQueue.push(this.root)
+    queue.push(this.root)
     // loop as long as there is anything in the queue
-    while (toVisitQueue.length) {
-      if (toVisitQueue[0] ? )
+    while (queue.length) {
+      node = queue.shift();
+      data.push(node.value);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
     }
+    return visitedValues;
 }
 
 class Node {
