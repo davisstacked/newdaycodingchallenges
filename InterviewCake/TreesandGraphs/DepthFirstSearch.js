@@ -45,5 +45,6 @@ const DFSPostOrder = (BST) => {
   }
 
   traverse(current);
+  return nodeValues;
 }
 
