@@ -1,9 +1,9 @@
-// Depth First Search PreOrder
+// Depth First Search 
 
 // Steps - recursively
 
-
-const DFS = (BST) => {
+// PREORDER
+const DFSPreOrder = (BST) => {
   
   // Create a variable to store the values of nodes visited
   const nodeValues = [];
@@ -25,3 +25,25 @@ const DFS = (BST) => {
   // Return the array of values
   return nodeValues;
 }
+
+// POSTORDER
+const DFSPostOrder = (BST) => {
+  // Create a variable to store the values of nodes visited
+  const nodeValues = [];
+
+  // Store the root of the BST in a variable called current
+  const current = BST.root;
+
+  // Write a helper function which accepts a node
+  const traverse = (node) => {
+    // If the node has a left property, call the helper function with the left property on the node
+    if (node.left) traverse(node.left);
+   // If the node has a right property, call the helper function with the right property on the node. 
+    if (node.right) traverse(node.right);
+    // Push the value of the node to the variable that stores the values
+    nodeValues.push(node.value);
+  }
+
+  traverse(current);
+}
+
