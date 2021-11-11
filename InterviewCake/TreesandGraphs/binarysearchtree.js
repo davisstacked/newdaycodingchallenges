@@ -4,6 +4,26 @@ class BinarySearchTree {
   constructor() {
     this.root = null;
   }
+
+  contains(value) {
+    if (this.root === null) {
+      return false;
+    } else {
+      const current = this.root;
+      const found = false;
+      while (current && !found) {
+        if (value < current.value) {
+          current = current.left;
+        } else if (value > current.value) {
+          current = current.right;
+        } else {
+          return true;
+        }
+      }
+      return false;
+    }
+  }
+
   insert(value) {
     const newNode = new Node(value);
     if (this.root === null) {
@@ -51,24 +71,5 @@ tree.insert(2);
 
 console.log(tree)
 
-// inserting a node
-// steps iteratively and recursively
-
-// Create a new node
-// Starting at the root
-//  Check if there is a root, if not - the root now becomes the new node!
-// If there is a root, check if the value of the new node is greater than or less than the value of the root
-// If it is greater
-  // Check to see if there is a node to the right.
-  // if there is, move to that node and repeat these steps
-  // If there is not, add that node as the right property
-  
-  // if it is less
-    // Check to see if there is a node to the left.
-    // if there is, move to that node and repeat these steps
-    // if there is not, add that node as the left property
-    // return entire tree
-
-    // Create a new node
 const leahNode = new Node(20);
 
