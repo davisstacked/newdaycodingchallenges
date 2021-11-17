@@ -1,5 +1,12 @@
 // Binary Search Tree Class
 
+
+// RECAP
+// Trees are non-linear data structures that contain a root and child nodes
+// Binary trees can have values of any type, but at most two children for each parent
+// Binary Search Trees are a more specific version of binary trees where every node to the left of a parent is less than its value and every node to the right is greater.
+// We can search through trees using BFS and DFS.
+
 // Big O of BST
 // insertion - O(log n)
 // searching - O(log n)
@@ -101,6 +108,17 @@ class BinarySearchTree {
       if (node.left) traverse(node.left);
       if (node.right) traverse(node.right);
       data.push(node.value);
+    }
+    traverse(this.root);
+    return data;
+  }
+
+  DFSInOrder = () => {
+    const data = [];
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      data.push(node.value);
+      if (node.right) traverse(node.right);
     }
     traverse(this.root);
     return data;
