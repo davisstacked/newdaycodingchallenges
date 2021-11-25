@@ -95,4 +95,27 @@ class Change {
   }
 }
 
+// Solution
+// We use a bottom-up ↴ algorithm to build up a table waysOfDoingNCents such that waysOfDoingNCents[k] is how many ways we can get to k cents using our denominations. We start with the base case that there's one way to create the amount zero, and progressively add each of our denominations.
+
+// The number of new ways we can make a higherAmount when we account for a new coin is simply waysOfDoingNCents[higherAmount - coin], where we know that value already includes combinations involving coin (because we went bottom-up, we know smaller values have already been calculated).
+
+function changePossibilitiesBottomUp(amount, denominations) {
+
+  // Initialize an array of zeros with indices up to amount
+  const waysOfDoingNCents = new Array(amount + 1).fill(0);
+  waysOfDoingNCents[0] = 1;
+
+  denominations.forEach(coin => {
+    for (let higherAmount = coin; higherAmount <= amount; higherAmount++) {
+      const higherAmountRemainder = higherAmount - coin;
+      waysOfDoingNCents[higherAmount] += waysOfDoingNCents[higherAmountRemainder];
+    }
+  });
+  return waysOfDoingNCents[amount];
+}
+
+
+
+
 
