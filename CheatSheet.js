@@ -15,3 +15,10 @@
 
 // SPLICE
 // The splice() method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place. To access part of an array without modifying it, see slice().
+
+// REGEX
+/[a-z]/gi
+// --checks for any characters between given inputs
+// a-z---covers the entire alphabet
+// g-----globally throughout the whole string
+// i-----getting upper and lowercase
