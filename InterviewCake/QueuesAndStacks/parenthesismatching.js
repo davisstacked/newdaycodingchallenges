@@ -29,3 +29,18 @@ function getClosingParen(sentence, openingParenIndex) {
   }
   throw new Error('No closing parenthesis :(');
 }
+
+
+// Complexity
+// O(n) time, where n is the number of chars in the string. O(1) space.
+
+// What We Learned
+// The trick to many "parsing" questions like this is using a stack to track which brackets/phrases/etc are "open" as you go.
+
+// So next time you get a parsing question, one of your first thoughts should be "use a stack!"
+
+// In this problem, we can realize our stack would only hold '(' characters. So instead of storing each of those characters in a stack, we can store the number of items our stack would be holding.
+
+// That gets us from O(n) space to O(1) space.
+
+// It's pretty cool when you can replace a whole data structure with a single integer :)
