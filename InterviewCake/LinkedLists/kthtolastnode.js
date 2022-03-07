@@ -22,7 +22,7 @@ b.next = c;
 c.next = d;
 d.next = e;
 
-// O(n) time and O(1) space complexity solution with fewest steps: 
+// O(n) time and O(1) space complexity. (approach might still be slightly faster than 2nd approach listed, due to some caching and other optimizations that modern processors and memory have.): 
 
 function kthToLastNode(k, head) {
   if (k < 1) {
