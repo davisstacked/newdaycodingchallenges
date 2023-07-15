@@ -13,7 +13,3 @@ const selectionSort = (arr) => {
   }
   return arr;
 }
-
-console.log(selectionSort([4, 19, 3, 33, 8, 22]))
-
-console.log(selectionSort([4, 19, 3, 33, 8, 22]))
