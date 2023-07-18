@@ -9,7 +9,7 @@ const DFS = (node) => {
     if (currentNode.left) traverse(currentNode.left)
     if (currentNode.right) traverse(currentNode.right)
     visited.push(currentNode.value)
-    }
+    
   }
   traverse(current);
   return visited;
